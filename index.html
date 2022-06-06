@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+
+    <style>
+        body
+        {
+            background-color: black;
+        }
+        #getclock
+        {
+            color: rgb(9, 253, 9);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            font-size: 60px;
+        }
+    </style>
+</head>
+<body>
+       <div id="getclock">
+
+       </div>
+    <script>
+    
+    function showTime() 
+    {
+        let  date = new Date();
+        let hour = date.getHours();
+        let miniute = date.getMinutes();
+        let second = date.getSeconds();
+        let sesson = "AM";
+
+        //12hr format
+
+        if ( hour == 0 )
+        {
+            hour = 12;
+        }
+
+        if ( hour > 12 )
+        {
+            hour -= 12;
+            sesson = "PM";
+        }
+
+        // if ( hour < 10 )
+        // {
+        //     hour = "0" + hour;
+        // }
+
+        // if ( miniute < 10 )
+        // {
+        //     miniute = "0" + miniute;
+        // }
+
+        // if ( second < 10 )
+        // {
+        //     second = "0" + second;
+        // }
+
+        hour = ( hour < 10 ) ? "0" + hour : hour;
+        miniute = ( miniute < 10 ) ? "0" + miniute : miniute;
+        second = ( second < 10 ) ? "0" + second : second;
+
+
+        
+
+        
+       document.getElementById('getclock').innerHTML = hour + " : " + miniute + " : " + second + "  " + sesson;
+
+       setTimeout(showTime,1000);
+    // myTimeout = setTimeout(function, milliseconds);
+    // The setTimeout() method calls a function after a number of milliseconds.
+    // 1 second = 1000 milliseconds.
+    }
+
+    showTime();
+    </script>    
+</body>
+</html>
